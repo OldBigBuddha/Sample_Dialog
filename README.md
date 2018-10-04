@@ -1,2 +1,2 @@
 # Sample_Dialog
-Dialogのサンプルコードですです
+Dialogのサンプルコードです(2018/10/04現在)
