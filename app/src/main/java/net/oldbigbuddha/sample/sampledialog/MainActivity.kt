@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         bt_check.setOnClickListener {
             val fragment = CheckBoxDialogFragment()
             val mSelectedItems = ArrayList<Int>() // Where we track the selected items
+
             fragment.onMultiSelected = DialogInterface.OnMultiChoiceClickListener { _, index, isChecked ->
                 if (isChecked) {
                     mSelectedItems.add(index)
@@ -53,20 +54,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             fragment.onClickPositive = DialogInterface.OnClickListener { _, _ ->
-                val mSelectedItemContents = ArrayList<String>()
 
-                mSelectedItems.forEach {
-                    mSelectedItemContents.add(resources.getStringArray(R.array.items)[it])
+                resources?.apply {
+                    val mSelectedItemContents = ArrayList<String>()
+                    mSelectedItems.forEach {
+                        mSelectedItemContents.add(this.getStringArray(R.array.items)[it])
+                    }
+
+                    Snackbar.make(container, "Selected $mSelectedItemContents", Snackbar.LENGTH_SHORT).show()
+
                 }
-
-
-                Snackbar.make(container, "Selected $mSelectedItemContents", Snackbar.LENGTH_SHORT).show()
             }
             fragment.onClickNegative = DialogInterface.OnClickListener {_, _ ->
                 Snackbar.make(container, "OnClick 'cancel'", Snackbar.LENGTH_SHORT).show()
             }
             fragment.show(supportFragmentManager, "checkbox")
-
         }
 
         bt_radio.setOnClickListener {
