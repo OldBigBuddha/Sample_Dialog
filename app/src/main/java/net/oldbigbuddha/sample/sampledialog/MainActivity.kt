@@ -71,11 +71,16 @@ class MainActivity : AppCompatActivity() {
 
         bt_radio.setOnClickListener {
             val fragment = RadioBoxDialogFragment()
-            fragment.onSelectedItem = DialogInterface.OnClickListener { dialog, index ->
+            fragment.onSelectedItem = DialogInterface.OnClickListener { _, index ->
                 resources?.let {
-                    val item = it.getStringArray(R.array.items)[index]
+                    fragment.selectedIndex = index
+                }
+            }
+
+            fragment.onClickPositive = DialogInterface.OnClickListener{ _, _ ->
+                resources?.let {
+                    val item = it.getStringArray(R.array.items)[fragment.selectedIndex]
                     Snackbar.make(container, "Selected $item", Snackbar.LENGTH_SHORT).show()
-                    dialog.dismiss()
                 }
             }
             fragment.show(supportFragmentManager, "radio")

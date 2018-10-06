@@ -16,7 +16,7 @@ class ListDialogFragment: DialogFragment() {
         return activity?.let {
 
             val builder = AlertDialog.Builder(it)
-            builder.setTitle("Basic Dialog")
+            builder.setTitle("List Dialog")
                     .setItems(R.array.items, onSelectedItem)
 
 

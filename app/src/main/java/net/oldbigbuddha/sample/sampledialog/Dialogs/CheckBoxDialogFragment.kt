@@ -16,7 +16,7 @@ class CheckBoxDialogFragment: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            builder.setTitle("Basic Dialog")
+            builder.setTitle("CheckBox Dialog")
                     .setMultiChoiceItems(R.array.items, null/* default selected */,onMultiSelected)
                     .setPositiveButton("OK", onClickPositive)
                     .setNegativeButton("cancel", onClickNegative)

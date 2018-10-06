@@ -10,13 +10,17 @@ import net.oldbigbuddha.sample.sampledialog.R
 class RadioBoxDialogFragment: DialogFragment() {
 
     lateinit var onSelectedItem: DialogInterface.OnClickListener
+    lateinit var onClickPositive: DialogInterface.OnClickListener
+
+    var selectedIndex = 0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
 
             val builder = AlertDialog.Builder(it)
-            builder.setTitle("Basic Dialog")
+            builder.setTitle("RadioBox Dialog")
                     .setSingleChoiceItems(R.array.items, 0/* default selected */,onSelectedItem)
+                    .setPositiveButton("OK", onClickPositive)
 
 
             builder.create()
